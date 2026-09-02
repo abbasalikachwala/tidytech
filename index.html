@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tidy Tech | Friendly Home Tech Support in Christchurch</title>
+  <meta name="description" content="Patient, professional help with computers, Wi-Fi, printers, email, phones and smart TVs. Remote support across New Zealand and home visits in Christchurch.">
+  <meta name="theme-color" content="#17394d">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tidytech.co.nz/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tidy Tech — Tech Made Simple">
+  <meta property="og:description" content="Friendly, professional home technology support without the jargon.">
+  <meta property="og:url" content="https://tidytech.co.nz/">
+  <style>
+    :root {
+      --ink: #183344;
+      --ink-soft: #506773;
+      --brand: #177d78;
+      --brand-dark: #0f5d5a;
+      --brand-pale: #e5f4f1;
+      --accent: #e67d3e;
+      --paper: #ffffff;
+      --wash: #f5f9f8;
+      --line: #dce8e6;
+      --shadow: 0 18px 60px rgba(24, 51, 68, .11);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #ffb47d; outline-offset: 4px; }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 100;
+      padding: .75rem 1rem;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--ink);
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .container { width: min(calc(100% - 2.5rem), var(--max)); margin-inline: auto; }
+    .eyebrow {
+      margin: 0 0 .8rem;
+      color: var(--brand-dark);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -.035em; }
+    h1 { max-width: 800px; font-size: clamp(2.65rem, 7vw, 5.15rem); }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.35rem); }
+    h3 { font-size: 1.22rem; letter-spacing: -.02em; }
+    p { margin: 0; }
+    .lead { max-width: 680px; color: var(--ink-soft); font-size: clamp(1.1rem, 2vw, 1.27rem); }
+    .muted { color: var(--ink-soft); }
+    .section { padding: 6.5rem 0; }
+    .section-head { display: grid; gap: 1rem; margin-bottom: 2.75rem; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(220, 232, 230, .85);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(16px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 850;
+      letter-spacing: -.03em;
+    }
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 13px;
+      color: #fff;
+      background: var(--brand);
+      font-size: .9rem;
+      letter-spacing: -.04em;
+      box-shadow: 0 8px 22px rgba(23, 125, 120, .23);
+    }
+    .nav-links { display: flex; align-items: center; gap: 1.45rem; }
+    .nav-links > a:not(.button) {
+      color: var(--ink-soft);
+      font-size: .93rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-links > a:not(.button):hover { color: var(--brand-dark); }
+
+    .button {
+      display: inline-flex;
+      min-height: 49px;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .75rem 1.15rem;
+      border: 2px solid var(--brand);
+      border-radius: 13px;
+      color: #fff;
+      background: var(--brand);
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--brand-dark); border-color: var(--brand-dark); }
+    .button.secondary { color: var(--ink); background: transparent; border-color: var(--line); }
+    .button.secondary:hover { background: #fff; border-color: #a9c5c1; }
+    .button.light { color: var(--brand-dark); background: #fff; border-color: #fff; }
+    .button.light:hover { background: var(--brand-pale); border-color: var(--brand-pale); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 7.5rem 0 5.2rem;
+      background:
+        radial-gradient(circle at 84% 16%, rgba(23, 125, 120, .16), transparent 27rem),
+        linear-gradient(135deg, #fff 15%, var(--wash) 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      right: -190px;
+      bottom: -210px;
+      border: 52px solid rgba(230, 125, 62, .12);
+      border-radius: 50%;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.45fr .75fr; align-items: center; gap: 4rem; }
+    .hero-copy { position: relative; z-index: 1; }
+    .hero h1 span { color: var(--brand); }
+    .hero .lead { margin-top: 1.5rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      margin-top: 1.35rem;
+      color: var(--ink-soft);
+      font-size: .92rem;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #2ba66a;
+      box-shadow: 0 0 0 5px rgba(43, 166, 106, .12);
+    }
+    .hero-card {
+      position: relative;
+      z-index: 2;
+      padding: 1.65rem;
+      border: 1px solid rgba(220, 232, 230, .9);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .87);
+      box-shadow: var(--shadow);
+    }
+    .hero-card h2 { font-size: 1.2rem; }
+    .mini-list { display: grid; gap: .9rem; margin: 1.25rem 0 0; padding: 0; list-style: none; }
+    .mini-list li { display: grid; grid-template-columns: 34px 1fr; align-items: center; gap: .8rem; }
+    .check {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 10px;
+      color: var(--brand-dark);
+      background: var(--brand-pale);
+      font-weight: 900;
+    }
+    .mini-list strong { display: block; font-size: .98rem; }
+    .mini-list span { display: block; color: var(--ink-soft); font-size: .84rem; line-height: 1.4; }
+
+    .trust-strip { border-block: 1px solid var(--line); background: #fff; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .trust-item { padding: 1.45rem; text-align: center; }
+    .trust-item + .trust-item { border-left: 1px solid var(--line); }
+    .trust-item strong { display: block; font-size: 1rem; }
+    .trust-item span { color: var(--ink-soft); font-size: .88rem; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .service-card {
+      min-height: 210px;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .service-card:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(24, 51, 68, .08); }
+    .service-icon {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      margin-bottom: 1.2rem;
+      border-radius: 13px;
+      color: var(--brand-dark);
+      background: var(--brand-pale);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+    .service-card p { margin-top: .65rem; color: var(--ink-soft); font-size: .94rem; }
+
+    .remote-first { background: var(--ink); color: #fff; }
+    .remote-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 5rem; }
+    .remote-first .eyebrow { color: #7fe0d9; }
+    .remote-first .lead { margin-top: 1.2rem; color: #c9d8df; }
+    .remote-points { display: grid; gap: .85rem; }
+    .remote-point {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: start;
+      gap: 1rem;
+      padding: 1.15rem;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .06);
+    }
+    .remote-point .number {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 11px;
+      color: var(--ink);
+      background: #7fe0d9;
+      font-weight: 900;
+    }
+    .remote-point p { margin-top: .25rem; color: #c9d8df; font-size: .9rem; }
+
+    .pricing { background: var(--wash); }
+    .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .price-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 12px 40px rgba(24, 51, 68, .06);
+    }
+    .price-card.featured { border: 2px solid var(--brand); }
+    .price-badge {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      padding: .35rem .65rem;
+      border-radius: 999px;
+      color: var(--brand-dark);
+      background: var(--brand-pale);
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .price { margin-top: 1.2rem; font-size: 3rem; font-weight: 900; line-height: 1; letter-spacing: -.055em; }
+    .price small { color: var(--ink-soft); font-size: .95rem; font-weight: 650; letter-spacing: 0; }
+    .price-detail { margin-top: .75rem; color: var(--ink-soft); }
+    .price-list { display: grid; gap: .7rem; margin: 1.4rem 0 1.7rem; padding: 0; list-style: none; }
+    .price-list li { display: flex; gap: .6rem; color: var(--ink-soft); font-size: .94rem; }
+    .price-list li::before { content: "✓"; color: var(--brand); font-weight: 900; }
+    .price-card .button { margin-top: auto; }
+    .pricing-note { margin-top: 1.25rem; color: var(--ink-soft); font-size: .9rem; text-align: center; }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; counter-reset: steps; }
+    .step { padding: 1.4rem; border-top: 3px solid var(--brand-pale); }
+    .step::before {
+      counter-increment: steps;
+      content: "0" counter(steps);
+      display: block;
+      margin-bottom: 1.1rem;
+      color: var(--brand);
+      font-size: .85rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .step p { margin-top: .55rem; color: var(--ink-soft); font-size: .91rem; }
+
+    .boundaries-wrap {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      align-items: start;
+      gap: 4rem;
+      padding: 2.4rem;
+      border-radius: var(--radius);
+      background: var(--brand-pale);
+    }
+    .boundary-list { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem 1.4rem; margin: 0; padding: 0; list-style: none; }
+    .boundary-list li { position: relative; padding-left: 1.6rem; color: #365661; font-size: .92rem; }
+    .boundary-list li::before { content: "—"; position: absolute; left: 0; color: var(--brand); font-weight: 900; }
+
+    .faq-list { display: grid; gap: .75rem; max-width: 850px; }
+    details { border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    summary { padding: 1.15rem 1.25rem; cursor: pointer; font-weight: 800; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--brand); font-size: 1.3rem; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { padding: 0 1.25rem 1.2rem; color: var(--ink-soft); font-size: .95rem; }
+
+    .cta-section { padding: 2rem 0 6.5rem; }
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 3.25rem;
+      border-radius: 28px;
+      color: #fff;
+      background: var(--brand);
+    }
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -95px;
+      bottom: -120px;
+      border: 35px solid rgba(255, 255, 255, .1);
+      border-radius: 50%;
+    }
+    .cta-box h2 { font-size: clamp(1.85rem, 4vw, 2.8rem); }
+    .cta-box p { max-width: 650px; margin-top: .8rem; color: #d9f3f0; }
+    .cta-box .button { position: relative; z-index: 2; }
+
+    footer { padding: 2.2rem 0; border-top: 1px solid var(--line); }
+    .footer-grid { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--ink-soft); font-size: .88rem; }
+    .footer-grid a { color: var(--brand-dark); font-weight: 750; text-decoration: none; }
+
+    @media (max-width: 880px) {
+      .nav-links > a:not(.button) { display: none; }
+      .hero { padding-top: 5.5rem; }
+      .hero-grid, .remote-grid, .boundaries-wrap { grid-template-columns: 1fr; gap: 2.4rem; }
+      .hero-card { max-width: 560px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .cta-box { grid-template-columns: 1fr; }
+      .cta-box .button { justify-self: start; }
+    }
+
+    @media (max-width: 620px) {
+      body { font-size: 16px; }
+      .container { width: min(calc(100% - 1.5rem), var(--max)); }
+      .section { padding: 4.7rem 0; }
+      .nav { min-height: 68px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .nav-links .button { min-height: 43px; padding: .55rem .75rem; font-size: .82rem; }
+      .hero { padding: 4.7rem 0 4rem; }
+      h1 { font-size: clamp(2.55rem, 13vw, 3.6rem); }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .hero-card { padding: 1.3rem; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-item { padding: 1rem; text-align: left; }
+      .trust-item + .trust-item { border-top: 1px solid var(--line); border-left: 0; }
+      .services-grid, .price-grid, .steps, .boundary-list { grid-template-columns: 1fr; }
+      .service-card { min-height: 0; }
+      .boundaries-wrap { padding: 1.6rem; }
+      .cta-section { padding-bottom: 4.7rem; }
+      .cta-box { padding: 2rem 1.4rem; }
+      .cta-box .button { width: 100%; }
+      .footer-grid { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Tidy Tech",
+    "url": "https://tidytech.co.nz/",
+    "email": "hello@tidytech.co.nz",
+    "description": "Friendly residential technology support for computers, Wi-Fi, printers, email, phones and smart TVs.",
+    "areaServed": {
+      "@type": "City",
+      "name": "Christchurch"
+    },
+    "priceRange": "NZ$25–NZ$80+"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Tidy Tech home">
+        <span class="brand-mark" aria-hidden="true">TT</span>
+        <span>Tidy Tech</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how-it-works">How it works</a>
+        <a class="button" href="mailto:hello@tidytech.co.nz?subject=Tidy%20Tech%20support%20enquiry">Get tech help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Christchurch home tech support</p>
+          <h1>Technology help that feels <span>simple.</span></h1>
+          <p class="lead">Patient, professional help with computers, Wi-Fi, printers, email, phones and smart TVs—explained clearly, without the jargon.</p>
+          <div class="hero-actions">
+            <a class="button" href="mailto:hello@tidytech.co.nz?subject=Tidy%20Tech%20support%20enquiry&body=Name%3A%0ASuburb%3A%0ADevice%20and%20model%3A%0AWhat%20is%20going%20wrong%3A%0AWhen%20did%20it%20start%3A%0APreferred%20times%3A">Email your tech issue <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#pricing">See clear pricing</a>
+          </div>
+          <p class="availability"><span class="status-dot" aria-hidden="true"></span>Remote support first · Christchurch visits when needed</p>
+        </div>
+
+        <aside class="hero-card" aria-label="Tidy Tech service highlights">
+          <h2>Help without the hassle</h2>
+          <ul class="mini-list">
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              <div><strong>Plain-English guidance</strong><span>You know what changed and why.</span></div>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              <div><strong>Upfront pricing</strong><span>No surprise call-out fee.</span></div>
+            </li>
+            <li>
+              <span class="check" aria-hidden="true">✓</span>
+              <div><strong>Respectful support</strong><span>Your privacy and choices come first.</span></div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <div class="trust-strip" aria-label="Service commitments">
+      <div class="container trust-grid">
+        <div class="trust-item"><strong>Remote-first</strong><span>Faster help with no travel cost</span></div>
+        <div class="trust-item"><strong>Local and independent</strong><span>Based in Christchurch</span></div>
+        <div class="trust-item"><strong>Evenings and weekends</strong><span>Available by prior booking</span></div>
+      </div>
+    </div>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What I can help with</p>
+          <h2>Everyday tech, tidied up.</h2>
+          <p class="lead">From a printer that refuses to print to a new laptop that needs setting up, Tidy Tech helps make household technology work properly again.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">PC</div>
+            <h3>Computers and laptops</h3>
+            <p>Slow Windows PCs and Macs, software problems, updates, browser issues and general troubleshooting.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">@</div>
+            <h3>Email and cloud storage</h3>
+            <p>Outlook, Microsoft 365, Gmail, OneDrive and iCloud setup, syncing and file organisation.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">Wi</div>
+            <h3>Wi-Fi and printers</h3>
+            <p>Connection dropouts, router checks, wireless printers, scanners and home-office equipment.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">Ph</div>
+            <h3>Phones and tablets</h3>
+            <p>New-device setup, email, apps, storage, backups and making settings easier to use.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">TV</div>
+            <h3>Smart TVs and streaming</h3>
+            <p>Apple TV, Chromecast, streaming apps, account setup and device connection problems.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">↗</div>
+            <h3>New devices and backups</h3>
+            <p>Moving files and photos, basic backups, monitor and dock setup, and getting new tech ready.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section remote-first">
+      <div class="container remote-grid">
+        <div>
+          <p class="eyebrow">Remote-first support</p>
+          <h2>Start online. Arrange a visit only when it genuinely helps.</h2>
+          <p class="lead">Many problems can be resolved safely by phone or video call with screen sharing. If the issue needs physical access to equipment—or cannot be fixed remotely—we can arrange a Christchurch home visit.</p>
+        </div>
+        <div class="remote-points">
+          <div class="remote-point">
+            <span class="number" aria-hidden="true">1</span>
+            <div><h3>Email the details</h3><p>Tell me the device, the problem and your preferred times.</p></div>
+          </div>
+          <div class="remote-point">
+            <span class="number" aria-hidden="true">2</span>
+            <div><h3>Get a clear recommendation</h3><p>I’ll confirm whether remote or onsite support makes the most sense.</p></div>
+          </div>
+          <div class="remote-point">
+            <span class="number" aria-hidden="true">3</span>
+            <div><h3>Approve before continuing</h3><p>You stay in control of both the work and the cost.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Simple pricing</p>
+          <h2>Know the cost before we start.</h2>
+          <p class="lead">A short initial email enquiry and triage is free. Paid troubleshooting starts only after the approach and price are clear.</p>
+        </div>
+        <div class="price-grid">
+          <article class="price-card featured">
+            <span class="price-badge">Best place to start</span>
+            <h3>Remote support</h3>
+            <p class="price"><span aria-label="25 New Zealand dollars">$25</span> <small>/ 30 minutes</small></p>
+            <p class="price-detail">Phone or video call with screen sharing where appropriate.</p>
+            <ul class="price-list">
+              <li>First 30-minute block paid before the session</li>
+              <li>Any extra block approved and paid before continuing</li>
+              <li>No travel or call-out charge</li>
+            </ul>
+            <a class="button" href="mailto:hello@tidytech.co.nz?subject=Remote%20support%20enquiry">Ask about remote help</a>
+          </article>
+
+          <article class="price-card">
+            <h3>Christchurch home visit</h3>
+            <p class="price"><span aria-label="80 New Zealand dollars">$80</span> <small>/ first 60 minutes</small></p>
+            <p class="price-detail">Then $20 for each additional 30 minutes.</p>
+            <ul class="price-list">
+              <li>No separate call-out fee in the normal service area</li>
+              <li>Recommended only when physical access is needed</li>
+              <li>Approval requested before exceeding the first hour</li>
+            </ul>
+            <a class="button secondary" href="mailto:hello@tidytech.co.nz?subject=Christchurch%20home%20visit%20enquiry">Ask about a home visit</a>
+          </article>
+        </div>
+        <p class="pricing-note">All prices are in New Zealand dollars. Tidy Tech charges for professional diagnosis and troubleshooting time and does not offer “no fix, no fee”.</p>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2>A clear path from problem to solution.</h2>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Send an email</h3><p>Include your suburb, device, issue, error message and preferred times.</p></article>
+          <article class="step"><h3>Confirm the plan</h3><p>I’ll check the job is in scope and recommend remote or onsite help.</p></article>
+          <article class="step"><h3>Work through it</h3><p>We troubleshoot carefully, with approval before risky or extra work.</p></article>
+          <article class="step"><h3>Leave it tidy</h3><p>The result is tested and explained in plain English before we finish.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="trust-heading">
+      <div class="container boundaries-wrap">
+        <div>
+          <p class="eyebrow">Clear boundaries</p>
+          <h2 id="trust-heading">Your privacy matters.</h2>
+          <p class="muted" style="margin-top: 1rem;">Good technology support should feel safe and transparent. You remain in control throughout the appointment.</p>
+        </div>
+        <ul class="boundary-list">
+          <li>You enter your own passwords, PINs and security codes</li>
+          <li>I never operate your online banking</li>
+          <li>Backups are checked before resets or reinstalls</li>
+          <li>Approval is required before destructive changes</li>
+          <li>Temporary customer data is kept to a minimum</li>
+          <li>Uncertain outcomes are explained honestly</li>
+          <li>No password or security bypassing</li>
+          <li>No advanced data recovery or hardware repair</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Common questions</p>
+          <h2>Before you book.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>What should I include in my email?</summary>
+            <p>Your name, Christchurch suburb, device and model if known, what is going wrong, any error message, when it started, whether important files are backed up, and a few preferred appointment times.</p>
+          </details>
+          <details>
+            <summary>Do I need to send you my password?</summary>
+            <p>No. Never email passwords, PINs, MFA codes or recovery codes. You enter sensitive credentials yourself during the session.</p>
+          </details>
+          <details>
+            <summary>When are appointments available?</summary>
+            <p>Tidy Tech operates by prior booking, mainly during evenings and weekends. It is not an emergency or 24/7 support service.</p>
+          </details>
+          <details>
+            <summary>Which Christchurch areas do you visit?</summary>
+            <p>Home visits are available within the normal Christchurch service area. Include your suburb in the enquiry so availability can be confirmed before booking.</p>
+          </details>
+          <details>
+            <summary>What if the problem cannot be fixed?</summary>
+            <p>You are paying for professional diagnosis and troubleshooting time. If a fix is not practical, I’ll explain what was found and recommend the most sensible next step.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-box">
+        <div>
+          <h2>Got a tech problem? Let’s tidy it up.</h2>
+          <p>Email the details and I’ll confirm whether remote support or a Christchurch home visit is the best next step.</p>
+        </div>
+        <a class="button light" href="mailto:hello@tidytech.co.nz?subject=Tidy%20Tech%20support%20enquiry&body=Name%3A%0ASuburb%3A%0ADevice%20and%20model%3A%0AWhat%20is%20going%20wrong%3A%0AWhen%20did%20it%20start%3A%0APreferred%20times%3A">Email Tidy Tech <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <p>© <span id="year">2026</span> Tidy Tech · Tech Made Simple</p>
+      <p><a href="mailto:hello@tidytech.co.nz">hello@tidytech.co.nz</a> · Christchurch, New Zealand</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
