@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://tidytech.co.nz/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://tidytech.co.nz/assets/personal-it-support-christchurch.webp</image:loc>
+      <image:title>Personal IT support in Christchurch</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://tidytech.co.nz/assets/technology-working-at-home.webp</image:loc>
+      <image:title>Practical technology support at home</image:title>
+    </image:image>
   </url>
 </urlset>

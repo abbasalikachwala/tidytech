@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="180" viewBox="0 0 540 180" role="img" aria-labelledby="title desc">
+  <title id="title">Tidy Tech</title>
+  <desc id="desc">Tidy Tech logo with a blue T symbol and the words Tech Made Simple.</desc>
+  <rect x="12" y="24" width="132" height="132" rx="34" fill="#1261d6"/>
+  <path d="M45 63h66M78 63v58" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  <rect x="103" y="108" width="21" height="21" rx="7" fill="#79c7ff"/>
+  <text x="174" y="104" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="70" font-weight="750" letter-spacing="-3">
+    <tspan fill="#102542">Tidy</tspan><tspan fill="#1261d6">Tech</tspan>
+  </text>
+  <text x="178" y="137" fill="#51647f" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="4">TECH MADE SIMPLE</text>
+</svg>

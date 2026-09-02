@@ -1,6 +1,6 @@
 # Tidy Tech
 
-Static website for **Tidy Tech — Tech Made Simple**, a Christchurch-based residential technology support service.
+Static website for **Tidy Tech — Tech Made Simple**, providing personal IT support in Christchurch and remote help across New Zealand.
 
 ## Website
 
