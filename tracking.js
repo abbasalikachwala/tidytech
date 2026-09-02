@@ -1,9 +1,6 @@
 (() => {
   "use strict";
 
-  const config = window.TIDY_TECH_TRACKING || {};
-  const gtmId = String(config.gtmId || "").trim().toUpperCase();
-
   window.dataLayer = window.dataLayer || [];
 
   const track = (eventName, data = {}) => {
@@ -13,16 +10,6 @@
       ...data
     });
   };
-
-  // Load Google Tag Manager when a valid container ID has been configured.
-  if (/^GTM-[A-Z0-9]+$/.test(gtmId)) {
-    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
-
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
-    document.head.appendChild(script);
-  }
 
   const getDestinationType = (link) => {
     const href = String(link.getAttribute("href") || "").trim();
