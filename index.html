@@ -30,560 +30,7 @@
   <meta name="twitter:description" content="Practical help with computers, Wi-Fi, printers, email and everyday technology—without the runaround.">
   <meta name="twitter:image" content="https://tidytech.co.nz/assets/tidy-tech-social-preview.webp">
 
-  <style>
-    :root {
-      --navy: #102542;
-      --ink: #17304f;
-      --ink-soft: #52657d;
-      --blue: #1261d6;
-      --blue-dark: #0a49a5;
-      --sky: #eaf4ff;
-      --sky-strong: #d6eaff;
-      --wash: #f6f9fd;
-      --warm: #ffb45c;
-      --paper: #ffffff;
-      --line: #dbe5f1;
-      --shadow-sm: 0 12px 32px rgba(16, 37, 66, .08);
-      --radius-sm: 16px;
-      --radius: 24px;
-      --radius-lg: 34px;
-      --page-gutter: clamp(1.25rem, 4.2vw, 5rem);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: "Avenir Next", Avenir, Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 17px;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    img { display: block; max-width: 100%; }
-    a { color: inherit; }
-    button, a, summary { -webkit-tap-highlight-color: transparent; }
-    :focus-visible { outline: 3px solid var(--warm); outline-offset: 4px; }
-    .skip-link {
-      position: fixed;
-      top: -5rem;
-      left: 1rem;
-      z-index: 100;
-      padding: .75rem 1rem;
-      border-radius: 10px;
-      color: #fff;
-      background: var(--navy);
-    }
-    .skip-link:focus { top: 1rem; }
-
-    .container { width: 100%; max-width: none; margin: 0; padding-inline: var(--page-gutter); }
-    .section { padding: 5.75rem 0; }
-    .section-head { display: grid; gap: 1rem; max-width: 780px; margin-bottom: 3rem; }
-    .eyebrow {
-      margin: 0;
-      color: var(--blue-dark);
-      font-size: .76rem;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-    h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.08; letter-spacing: -.04em; }
-    h1 { max-width: 790px; font-size: clamp(2.85rem, 5.4vw, 4.75rem); }
-    h2 { font-size: clamp(2.2rem, 4.8vw, 3.7rem); }
-    h3 { font-size: 1.28rem; letter-spacing: -.025em; }
-    p { margin: 0; }
-    .lead { max-width: 720px; color: var(--ink-soft); font-size: clamp(1.08rem, 2vw, 1.25rem); }
-    .blue-text { color: var(--blue); }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      border-bottom: 1px solid rgba(219, 229, 241, .82);
-      background: rgba(255, 255, 255, .94);
-      backdrop-filter: blur(18px);
-    }
-    .nav {
-      min-height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-    }
-    .brand { display: inline-flex; align-items: center; text-decoration: none; }
-    .brand img { width: 205px; height: 68px; }
-    .nav-links { display: flex; align-items: center; gap: 1.65rem; }
-    .nav-links > a:not(.button) {
-      color: var(--ink-soft);
-      font-size: .92rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .nav-links > a:not(.button):hover { color: var(--blue-dark); }
-
-    .button {
-      display: inline-flex;
-      min-height: 50px;
-      align-items: center;
-      justify-content: center;
-      gap: .55rem;
-      padding: .76rem 1.25rem;
-      border: 2px solid var(--blue);
-      border-radius: 14px;
-      color: #fff;
-      background: var(--blue);
-      box-shadow: 0 9px 20px rgba(18, 97, 214, .18);
-      font-weight: 800;
-      text-align: center;
-      text-decoration: none;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
-    }
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: var(--blue-dark);
-      background: var(--blue-dark);
-      box-shadow: 0 13px 28px rgba(18, 97, 214, .25);
-    }
-    .button.secondary { color: var(--navy); background: #fff; border-color: var(--line); box-shadow: none; }
-    .button.secondary:hover { border-color: #9dbce2; background: var(--sky); }
-    .button.light { color: var(--blue-dark); background: #fff; border-color: #fff; }
-    .button.light:hover { color: var(--navy); background: var(--sky); border-color: var(--sky); }
-
-    .hero { background: var(--wash); }
-    .hero > .container { padding-inline: 0; }
-    .hero-shell {
-      position: relative;
-      min-height: 680px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      align-items: center;
-      border-block: 1px solid var(--line);
-      background: #edf4fc;
-      isolation: isolate;
-    }
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    .hero-shell::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: linear-gradient(90deg, rgba(255,255,255,.99) 0%, rgba(255,255,255,.97) 37%, rgba(255,255,255,.62) 58%, rgba(255,255,255,.04) 78%);
-    }
-    .hero-copy {
-      grid-column: 1;
-      width: min(calc(100% - 3rem), 680px);
-      justify-self: center;
-      padding-block: clamp(3rem, 7vw, 6rem);
-    }
-    .hero .eyebrow { margin-bottom: 1rem; }
-    .hero .lead { max-width: 650px; margin-top: 1.5rem; color: #415873; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
-    .hero-note { margin-top: 1.05rem; color: var(--ink-soft); font-size: .88rem; }
-    .proof-strip { border-bottom: 1px solid var(--line); background: #fff; }
-    .proof-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
-    .proof-item {
-      display: flex;
-      min-height: 116px;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1.1rem clamp(.8rem, 1.5vw, 1.6rem);
-      text-align: center;
-    }
-    .proof-item + .proof-item { border-left: 1px solid var(--line); }
-    .proof-item strong { display: block; color: var(--navy); font-size: 1rem; }
-    .proof-item span { color: var(--ink-soft); font-size: .88rem; }
-
-    .problem-section { padding: 0; background: linear-gradient(135deg, #f7faff 0%, #edf5ff 100%); }
-    .problem-section > .container { padding-inline: 0; }
-    .problem-panel {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(4rem, 6vw, 6.5rem) var(--page-gutter);
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-    }
-    .problem-panel::after {
-      content: "";
-      position: absolute;
-      top: -150px;
-      right: -120px;
-      width: 300px;
-      height: 300px;
-      border: 52px solid rgba(18, 97, 214, .045);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .problem-intro { position: relative; z-index: 1; max-width: 880px; margin-bottom: 2.8rem; }
-    .problem-intro h2 { max-width: 800px; }
-    .problem-intro .lead { max-width: 750px; margin-top: 1.3rem; }
-    .problem-grid {
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid #d6e3f2;
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, .78);
-      box-shadow: 0 18px 45px rgba(16, 37, 66, .055);
-    }
-    .problem-card {
-      min-height: 230px;
-      padding: 2rem;
-      border: 0;
-      background: transparent;
-    }
-    .problem-card + .problem-card { border-left: 1px solid #d6e3f2; }
-    .problem-number {
-      display: grid;
-      width: 40px;
-      height: 40px;
-      place-items: center;
-      margin-bottom: 1.35rem;
-      border: 1px solid #bad5f5;
-      border-radius: 50%;
-      color: var(--blue-dark);
-      background: #fff;
-      font-size: .78rem;
-      font-weight: 900;
-    }
-    .problem-card p { margin-top: .65rem; color: var(--ink-soft); font-size: .95rem; }
-
-    .outcome-section { background: var(--sky); }
-    .outcome-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 650px;
-    }
-    .outcome-photo-wrap { min-height: 100%; }
-    .outcome-photo {
-      width: 100%;
-      height: 100%;
-      min-height: 650px;
-      object-fit: cover;
-    }
-    .outcome-copy { align-self: center; max-width: 730px; padding: clamp(3rem, 5vw, 5rem); }
-    .outcome-copy .eyebrow { margin-bottom: 1rem; }
-    .outcome-copy .lead { margin-top: 1.25rem; }
-    .outcome-list { display: grid; gap: .9rem; margin: 1.6rem 0 0; padding: 0; list-style: none; }
-    .outcome-list li { display: grid; grid-template-columns: 34px 1fr; gap: .8rem; align-items: start; }
-    .outcome-list .tick {
-      display: grid;
-      width: 32px;
-      height: 32px;
-      place-items: center;
-      border-radius: 10px;
-      color: var(--blue-dark);
-      background: var(--sky);
-      font-weight: 900;
-    }
-    .outcome-list strong { display: block; color: var(--navy); }
-    .outcome-list span { display: block; color: var(--ink-soft); font-size: .92rem; }
-
-    .services { background: var(--navy); color: #fff; }
-    .services h2, .services h3 { color: #fff; }
-    .services .eyebrow { color: #8fc9ff; }
-    .services .lead { color: #c5d3e5; }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .service-card {
-      min-height: 230px;
-      padding: 1.65rem;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 20px;
-      background: rgba(255,255,255,.055);
-      transition: transform .18s ease, background .18s ease;
-    }
-    .service-card:hover { transform: translateY(-3px); background: rgba(255,255,255,.09); }
-    .service-icon {
-      display: grid;
-      width: 48px;
-      height: 48px;
-      place-items: center;
-      margin-bottom: 1.2rem;
-      border-radius: 14px;
-      color: #fff;
-      background: var(--blue);
-    }
-    .service-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .service-card p { margin-top: .7rem; color: #c5d3e5; font-size: .94rem; }
-
-    .pricing { background: var(--wash); }
-    .pricing-intro { max-width: 850px; margin-bottom: 2.7rem; }
-    .pricing-intro .section-head { margin-bottom: 0; }
-    .free-triage {
-      max-width: 760px;
-      margin-top: .25rem;
-      padding-left: 1rem;
-      border-left: 3px solid var(--blue);
-      color: #405975;
-      font-size: .95rem;
-      line-height: 1.55;
-    }
-    .price-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-    .price-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      padding: 2.15rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      box-shadow: var(--shadow-sm);
-    }
-    .price-card.featured { border: 2px solid var(--blue); }
-    .price-badge {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      padding: .35rem .7rem;
-      border-radius: 999px;
-      color: var(--blue-dark);
-      background: var(--sky);
-      font-size: .7rem;
-      font-weight: 850;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-    .price { margin-top: 1.15rem; color: var(--navy); font-size: 3.25rem; font-weight: 900; line-height: 1; letter-spacing: -.06em; }
-    .price small { color: var(--ink-soft); font-size: .96rem; font-weight: 650; letter-spacing: 0; }
-    .price-detail { margin-top: .8rem; color: var(--ink-soft); }
-    .price-list { display: grid; gap: .72rem; margin: 1.5rem 0 1.8rem; padding: 0; list-style: none; }
-    .price-list li { display: flex; gap: .65rem; color: var(--ink-soft); font-size: .94rem; }
-    .price-list li::before { content: "✓"; color: var(--blue); font-weight: 900; }
-    .price-card .button { margin-top: auto; }
-    .pricing-note { max-width: 810px; margin: 1.3rem auto 0; color: var(--ink-soft); font-size: .88rem; text-align: center; }
-
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
-    .step {
-      position: relative;
-      padding: 1.6rem 1.5rem 1.5rem;
-      border-top: 4px solid var(--sky-strong);
-      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-      background: #fff;
-    }
-    .step-number { display: block; margin-bottom: .9rem; color: var(--blue); font-size: .8rem; font-weight: 900; letter-spacing: .1em; }
-    .step p { margin-top: .62rem; color: var(--ink-soft); font-size: .93rem; }
-
-    .trust-section { padding: 0; background: linear-gradient(135deg, var(--sky), #fff); }
-    .trust-wrap {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      align-items: start;
-      gap: clamp(2rem, 6vw, 5rem);
-      padding: clamp(4rem, 6vw, 6.5rem) var(--page-gutter);
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-    }
-    .trust-wrap .eyebrow { margin-bottom: 1rem; }
-    .trust-wrap .lead { margin-top: 1rem; }
-    .boundary-list { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem 1.5rem; margin: 0; padding: 0; list-style: none; }
-    .boundary-list li { position: relative; padding-left: 1.75rem; color: #405975; font-size: .92rem; }
-    .boundary-list li::before { content: "✓"; position: absolute; left: 0; color: var(--blue); font-weight: 900; }
-
-    .faq { background: var(--wash); }
-    .faq-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: .8rem; max-width: none; }
-    .faq-list details:last-child { grid-column: 1 / -1; }
-    details { border: 1px solid var(--line); border-radius: 16px; background: #fff; }
-    summary { padding: 1.2rem 1.3rem; cursor: pointer; color: var(--navy); font-weight: 800; list-style: none; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; float: right; color: var(--blue); font-size: 1.35rem; line-height: 1; }
-    details[open] summary::after { content: "−"; }
-    details p { padding: 0 1.3rem 1.25rem; color: var(--ink-soft); font-size: .95rem; }
-
-    .final-cta { padding: 0; background: var(--navy); }
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 2rem;
-      padding: clamp(3.5rem, 5.5vw, 6rem) var(--page-gutter);
-      border-radius: 0;
-      color: #fff;
-      background: var(--navy);
-    }
-    .cta-box::after {
-      content: "";
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      right: -120px;
-      bottom: -150px;
-      border: 40px solid rgba(121,199,255,.14);
-      border-radius: 50%;
-    }
-    .cta-box h2 { max-width: 760px; color: #fff; font-size: clamp(2rem, 4.5vw, 3.45rem); }
-    .cta-box p { max-width: 650px; margin-top: .8rem; color: #c8d7e8; }
-    .cta-box .button { position: relative; z-index: 2; }
-
-    footer { padding: 2.4rem 0; border-top: 1px solid var(--line); background: #fff; }
-    .footer-grid { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 2rem; color: var(--ink-soft); font-size: .86rem; }
-    .footer-logo { width: 150px; height: auto; }
-    .footer-grid a { color: var(--blue-dark); font-weight: 750; text-decoration: none; }
-    .footer-meta { text-align: right; }
-    .mobile-cta { display: none; }
-
-    @media (max-width: 940px) {
-      .nav-links > a:not(.button) { display: none; }
-      .hero-shell { min-height: 720px; display: flex; align-items: flex-start; padding: 3.5rem; }
-      .hero-shell::before { background: linear-gradient(180deg, rgba(255,255,255,.99) 0%, rgba(255,255,255,.95) 49%, rgba(255,255,255,.12) 75%); }
-      .hero-copy { width: auto; max-width: 720px; padding: 0; }
-      .proof-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-      .proof-item { grid-column: span 2; }
-      .proof-item:nth-child(n + 4) { grid-column: span 3; border-top: 1px solid var(--line); }
-      .proof-item:nth-child(4) { border-left: 0; }
-      .trust-wrap { grid-template-columns: 1fr; gap: 2.4rem; }
-      .outcome-grid { grid-template-columns: 1fr; min-height: 0; }
-      .outcome-photo, .outcome-photo-wrap { min-height: 500px; height: 500px; }
-      .outcome-copy { max-width: none; }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 680px) {
-      body { padding-bottom: calc(74px + env(safe-area-inset-bottom)); font-size: 16px; }
-      .container { padding-inline: .7rem; }
-      .section { padding: 4.8rem 0; }
-      .site-header { box-shadow: 0 8px 24px rgba(16, 37, 66, .06); }
-      .nav { min-height: 66px; gap: .65rem; }
-      .brand img { width: min(40vw, 150px); height: auto; }
-      .nav-links .button { min-height: 40px; padding: .48rem .78rem; border-radius: 12px; font-size: .78rem; }
-      .hero-shell {
-        min-height: 0;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-        background: #fff;
-      }
-      .hero-shell::before { display: none; }
-      .hero-copy {
-        order: 1;
-        width: 100%;
-        max-width: none;
-        padding: 2.15rem 1.25rem 1.55rem;
-      }
-      .hero-image {
-        position: relative;
-        inset: auto;
-        z-index: auto;
-        order: 2;
-        width: 100%;
-        height: 220px;
-        object-position: 62% 45%;
-      }
-      .hero .eyebrow { margin-bottom: .7rem; font-size: .68rem; letter-spacing: .11em; }
-      .hero h1 { max-width: 11ch; font-size: clamp(2.3rem, 10.4vw, 2.7rem); line-height: 1.03; }
-      .hero .lead { margin-top: 1rem; font-size: .98rem; line-height: 1.55; }
-      .hero-actions { align-items: stretch; flex-direction: column; gap: .6rem; margin-top: 1.3rem; }
-      .hero-actions .button { width: 100%; min-height: 50px; padding: .68rem .9rem; font-size: .94rem; }
-      .hero-actions .button.secondary {
-        min-height: auto;
-        justify-content: flex-start;
-        width: fit-content;
-        padding: .25rem 0;
-        border: 0;
-        border-radius: 0;
-        color: var(--blue-dark);
-        background: transparent;
-        box-shadow: none;
-        text-decoration: underline;
-        text-decoration-color: #aac8ee;
-        text-underline-offset: 4px;
-      }
-      .hero-note { margin-top: .55rem; font-size: .78rem; line-height: 1.45; }
-      .proof-strip { overflow: hidden; padding: .8rem 0; }
-      .proof-grid {
-        display: flex;
-        gap: .7rem;
-        overflow-x: auto;
-        padding: 0 .7rem .2rem;
-        scroll-padding-left: .7rem;
-        scroll-snap-type: x proximity;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-      }
-      .proof-grid::-webkit-scrollbar { display: none; }
-      .proof-item,
-      .proof-item:nth-child(n + 4) {
-        flex: 0 0 min(78vw, 285px);
-        min-height: 94px;
-        padding: .9rem 1rem;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        background: var(--wash);
-        scroll-snap-align: start;
-        text-align: left;
-      }
-      .proof-item + .proof-item,
-      .proof-item:nth-child(n),
-      .proof-item:nth-child(n + 3),
-      .proof-item:nth-child(4) { border: 1px solid var(--line); }
-      .proof-item strong { font-size: .9rem; }
-      .proof-item span { font-size: .8rem; line-height: 1.45; }
-      .problem-grid, .services-grid, .price-grid, .steps, .boundary-list, .faq-list { grid-template-columns: 1fr; }
-      .faq-list details:last-child { grid-column: auto; }
-      .problem-panel { padding: 3.8rem var(--page-gutter); }
-      .problem-panel::after { top: -190px; right: -180px; }
-      .problem-intro { margin-bottom: 1.8rem; }
-      .problem-intro .lead { margin-top: 1rem; }
-      .problem-card, .service-card { min-height: 0; }
-      .problem-card { padding: 1.45rem; }
-      .problem-card + .problem-card { border-top: 1px solid #d6e3f2; border-left: 0; }
-      .outcome-photo, .outcome-photo-wrap { min-height: 350px; height: 350px; }
-      .outcome-copy { padding: 3.5rem 1.35rem; }
-      .price-card { padding: 1.55rem; }
-      .price-badge { position: static; align-self: flex-start; margin-bottom: .9rem; }
-      .trust-wrap { padding: 3.8rem var(--page-gutter); }
-      .cta-box { grid-template-columns: 1fr; padding: 3.5rem var(--page-gutter); border-radius: 0; }
-      .cta-box .button { width: 100%; }
-      .footer-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .footer-meta { text-align: left; }
-      .mobile-cta {
-        position: fixed;
-        right: .75rem;
-        bottom: calc(.65rem + env(safe-area-inset-bottom));
-        left: .75rem;
-        z-index: 40;
-        display: flex;
-        min-height: 52px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 15px;
-        color: #fff;
-        background: var(--blue);
-        box-shadow: 0 12px 32px rgba(16,37,66,.28);
-        font-weight: 850;
-        text-decoration: none;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(120%);
-        transition: opacity .18s ease, transform .18s ease;
-      }
-      .mobile-cta-visible .mobile-cta { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 
   <script type="application/ld+json">
   {
@@ -613,21 +60,21 @@
 
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Tidy Tech home">
+      <a class="brand" data-track-nav="home" href="#top" aria-label="Tidy Tech home">
         <img src="assets/tidy-tech-logo.svg" width="205" height="68" alt="Tidy Tech — Tech Made Simple">
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#problems">Why Tidy Tech</a>
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#how-it-works">How it works</a>
+        <a data-track-nav="problems" href="#problems">Why Tidy Tech</a>
+        <a data-track-nav="services" href="#services">Services</a>
+        <a data-track-nav="pricing" href="#pricing">Pricing</a>
+        <a data-track-nav="how-it-works" href="#how-it-works">How it works</a>
         <a class="button" data-track="header-help" href="mailto:help@tidytech.co.nz?subject=Help%20with%20my%20technology&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20some%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0AMy%20Christchurch%20suburb%20%28if%20requesting%20a%20visit%29%3A%20%0ABest%20days%2Ftimes%3A%20%0APreferred%20support%20%28remote%2Fonsite%2Fnot%20sure%29%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Get help</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <section class="hero" id="top" data-track-view="hero" data-track-type="section">
       <div class="container">
         <div class="hero-shell">
           <img class="hero-image" src="assets/personal-it-support-christchurch.webp" width="1586" height="992" alt="A technology support professional helping a Christchurch customer with a laptop and Wi-Fi router">
@@ -636,7 +83,7 @@
             <h1>When your tech stops working, <span class="blue-text">everything else does too.</span></h1>
             <p class="lead">Printer won’t print? Wi-Fi keeps dropping out? New laptop already driving you mad? I’ll get it working and explain what changed—in plain English.</p>
             <div class="hero-actions">
-              <a class="button" data-track="hero-help" href="mailto:help@tidytech.co.nz?subject=Help%20with%20my%20technology&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20some%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0AMy%20Christchurch%20suburb%20%28if%20requesting%20a%20visit%29%3A%20%0ABest%20days%2Ftimes%3A%20%0APreferred%20support%20%28remote%2Fonsite%2Fnot%20sure%29%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Get help with my tech <span aria-hidden="true">→</span></a>
+              <a class="button" data-track="hero-help" data-track-view="hero-help" data-track-type="cta" href="mailto:help@tidytech.co.nz?subject=Help%20with%20my%20technology&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20some%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0AMy%20Christchurch%20suburb%20%28if%20requesting%20a%20visit%29%3A%20%0ABest%20days%2Ftimes%3A%20%0APreferred%20support%20%28remote%2Fonsite%2Fnot%20sure%29%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Get help with my tech <span aria-hidden="true">→</span></a>
               <a class="button secondary" data-track="hero-pricing" href="#pricing">See pricing</a>
             </div>
             <p class="hero-note">A simple email is enough to start. No commitment. No pressure.</p>
@@ -645,7 +92,7 @@
       </div>
     </section>
 
-    <section class="proof-strip" aria-label="Tidy Tech service summary">
+    <section class="proof-strip" aria-label="Tidy Tech service summary" data-track-view="proof-strip" data-track-type="section">
       <div class="proof-grid">
         <div class="proof-item"><strong>Remote support across New Zealand</strong><span>Get help without waiting for a visit</span></div>
         <div class="proof-item"><strong>Onsite support in Christchurch</strong><span>When someone needs to be there in person</span></div>
@@ -655,7 +102,7 @@
       </div>
     </section>
 
-    <section class="section problem-section" id="problems">
+    <section class="section problem-section" id="problems" data-track-view="problems" data-track-type="section">
       <div class="container">
         <div class="problem-panel">
           <div class="problem-intro">
@@ -672,7 +119,7 @@
       </div>
     </section>
 
-    <section class="outcome-section" id="outcome" aria-labelledby="outcome-heading">
+    <section class="outcome-section" id="outcome" aria-labelledby="outcome-heading" data-track-view="outcome" data-track-type="section">
       <div class="outcome-grid">
         <div class="outcome-photo-wrap">
           <img class="outcome-photo" src="assets/technology-working-at-home.webp" width="1448" height="1086" loading="lazy" alt="A relaxed customer using her laptop and phone after getting practical technology help">
@@ -690,7 +137,7 @@
       </div>
     </section>
 
-    <section class="section services" id="services">
+    <section class="section services" id="services" data-track-view="services" data-track-type="section">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Computer and IT support services</p>
@@ -708,7 +155,7 @@
       </div>
     </section>
 
-    <section class="section pricing" id="pricing">
+    <section class="section pricing" id="pricing" data-track-view="pricing" data-track-type="section">
       <div class="container">
         <div class="pricing-intro">
           <div class="section-head">
@@ -722,21 +169,21 @@
             <p class="price"><span>$50</span> <small>/ first hour</small></p>
             <p class="price-detail">Phone or video support with screen sharing when appropriate.</p>
             <ul class="price-list"><li>One-hour minimum charge, even if the issue is resolved sooner</li><li>Then $25 for each additional 30 minutes</li><li>First hour paid before the appointment</li><li>No travel or call-out cost</li></ul>
-            <a class="button" data-track="remote-support" href="mailto:help@tidytech.co.nz?subject=Remote%20IT%20support%20enquiry&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20remote%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0ABest%20days%2Ftimes%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Ask about remote support</a>
+            <a class="button" data-track="remote-support" data-track-view="remote-support" data-track-type="cta" href="mailto:help@tidytech.co.nz?subject=Remote%20IT%20support%20enquiry&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20remote%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0ABest%20days%2Ftimes%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Ask about remote support</a>
           </article>
           <article class="price-card">
             <h3>Christchurch onsite visit</h3>
             <p class="price"><span>$80</span> <small>/ first 60 minutes</small></p>
             <p class="price-detail">For problems that need physical access to your equipment.</p>
             <ul class="price-list"><li>Then $50 per hour, charged as $25 per 30 minutes</li><li>No separate call-out fee in the normal service area</li><li>Recommended only when being onsite genuinely helps</li><li>I ask before going beyond the first hour</li></ul>
-            <a class="button secondary" data-track="onsite-visit" href="mailto:help@tidytech.co.nz?subject=Christchurch%20onsite%20IT%20support%20enquiry&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20onsite%20help%20with%3A%0A%0AMy%20Christchurch%20suburb%3A%20%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0ABest%20days%2Ftimes%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Ask about an onsite visit</a>
+            <a class="button secondary" data-track="onsite-visit" data-track-view="onsite-visit" data-track-type="cta" href="mailto:help@tidytech.co.nz?subject=Christchurch%20onsite%20IT%20support%20enquiry&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20onsite%20help%20with%3A%0A%0AMy%20Christchurch%20suburb%3A%20%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0ABest%20days%2Ftimes%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Ask about an onsite visit</a>
           </article>
         </div>
         <p class="pricing-note">All prices are in New Zealand dollars. You are paying for professional diagnosis and troubleshooting time; Tidy Tech does not offer “no fix, no fee”.</p>
       </div>
     </section>
 
-    <section class="section" id="how-it-works">
+    <section class="section" id="how-it-works" data-track-view="how-it-works" data-track-type="section">
       <div class="container">
         <div class="section-head"><p class="eyebrow">How it works</p><h2>Start with the messy version. I’ll help make sense of it.</h2><p class="lead">You don’t need to know the technical name for the problem before getting in touch.</p></div>
         <div class="steps">
@@ -747,32 +194,32 @@
       </div>
     </section>
 
-    <section class="section trust-section" aria-labelledby="trust-heading">
+    <section class="section trust-section" id="trust" aria-labelledby="trust-heading" data-track-view="trust" data-track-type="section">
       <div class="container trust-wrap">
         <div><p class="eyebrow">Your device, your data, your decision</p><h2 id="trust-heading">You stay in control.</h2><p class="lead">Good IT support should feel calm and transparent. I explain the options, ask before making significant changes and never need you to email sensitive credentials.</p></div>
         <ul class="boundary-list"><li>You enter your own passwords, PINs and security codes</li><li>I never operate your online banking</li><li>Backups are checked before resets or reinstalls</li><li>Approval comes before destructive changes</li><li>Temporary customer data is kept to a minimum</li><li>Uncertain outcomes are explained honestly</li><li>No password or security bypassing</li><li>No advanced data recovery or hardware repair</li></ul>
       </div>
     </section>
 
-    <section class="section faq" id="faq">
+    <section class="section faq" id="faq" data-track-view="faq" data-track-type="section">
       <div class="container">
         <div class="section-head"><p class="eyebrow">Common questions</p><h2>Before you get in touch.</h2></div>
         <div class="faq-list">
-          <details><summary>What should I include in my email?</summary><p>Tell me the device, what is going wrong, what you have already tried and a few times that suit you. If you want an onsite visit, include your Christchurch suburb. Do not send passwords, PINs or security codes.</p></details>
-          <details><summary>How much does remote support cost?</summary><p>Remote IT support is NZ$50 for the first hour, with a one-hour minimum charge. If more time is needed, it is NZ$25 for each additional 30 minutes, and I will ask before continuing.</p></details>
-          <details><summary>Will I be made to feel silly for not knowing something?</summary><p>No. Technology is frustrating when it does not work, and nobody knows everything. You will get patient help and a clear explanation without judgement or jargon.</p></details>
-          <details><summary>Do I need to send you my password?</summary><p>No. Never email passwords, PINs, multi-factor authentication codes or recovery codes. You enter sensitive credentials yourself during the session.</p></details>
-          <details><summary>When are appointments available?</summary><p>Tidy Tech works by prior booking, mainly during evenings and weekends. It is not an emergency or 24/7 support service.</p></details>
-          <details><summary>Which Christchurch areas do you visit?</summary><p>Onsite visits are available within the normal Christchurch service area. Include your suburb in the enquiry and I will confirm availability before booking.</p></details>
-          <details><summary>What if the problem cannot be fixed?</summary><p>You are paying for professional diagnosis and troubleshooting time. If a fix is not practical, I will explain what was found and recommend the most sensible next step.</p></details>
+          <details data-track-faq="email-requirements"><summary>What should I include in my email?</summary><p>Tell me the device, what is going wrong, what you have already tried and a few times that suit you. If you want an onsite visit, include your Christchurch suburb. Do not send passwords, PINs or security codes.</p></details>
+          <details data-track-faq="remote-support-cost"><summary>How much does remote support cost?</summary><p>Remote IT support is NZ$50 for the first hour, with a one-hour minimum charge. If more time is needed, it is NZ$25 for each additional 30 minutes, and I will ask before continuing.</p></details>
+          <details data-track-faq="no-judgement"><summary>Will I be made to feel silly for not knowing something?</summary><p>No. Technology is frustrating when it does not work, and nobody knows everything. You will get patient help and a clear explanation without judgement or jargon.</p></details>
+          <details data-track-faq="password-security"><summary>Do I need to send you my password?</summary><p>No. Never email passwords, PINs, multi-factor authentication codes or recovery codes. You enter sensitive credentials yourself during the session.</p></details>
+          <details data-track-faq="appointment-availability"><summary>When are appointments available?</summary><p>Tidy Tech works by prior booking, mainly during evenings and weekends. It is not an emergency or 24/7 support service.</p></details>
+          <details data-track-faq="christchurch-coverage"><summary>Which Christchurch areas do you visit?</summary><p>Onsite visits are available within the normal Christchurch service area. Include your suburb in the enquiry and I will confirm availability before booking.</p></details>
+          <details data-track-faq="problem-not-fixed"><summary>What if the problem cannot be fixed?</summary><p>You are paying for professional diagnosis and troubleshooting time. If a fix is not practical, I will explain what was found and recommend the most sensible next step.</p></details>
         </div>
       </div>
     </section>
 
-    <section class="final-cta">
+    <section class="final-cta" data-track-view="final-cta" data-track-type="section">
       <div class="container cta-box">
         <div><h2>Stop losing time to a problem that should already be sorted.</h2><p>Send the details to help@tidytech.co.nz. I’ll read through them and tell you the simplest way forward.</p></div>
-        <a class="button light" data-track="final-help" href="mailto:help@tidytech.co.nz?subject=Help%20with%20my%20technology&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20some%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0AMy%20Christchurch%20suburb%20%28if%20requesting%20a%20visit%29%3A%20%0ABest%20days%2Ftimes%3A%20%0APreferred%20support%20%28remote%2Fonsite%2Fnot%20sure%29%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Tell me what is happening <span aria-hidden="true">→</span></a>
+        <a class="button light" data-track="final-help" data-track-view="final-help" data-track-type="cta" href="mailto:help@tidytech.co.nz?subject=Help%20with%20my%20technology&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20some%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0AMy%20Christchurch%20suburb%20%28if%20requesting%20a%20visit%29%3A%20%0ABest%20days%2Ftimes%3A%20%0APreferred%20support%20%28remote%2Fonsite%2Fnot%20sure%29%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Tell me what is happening <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
@@ -785,11 +232,10 @@
     </div>
   </footer>
 
-  <a class="mobile-cta" data-track="mobile-help" href="mailto:help@tidytech.co.nz?subject=Help%20with%20my%20technology&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20some%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0AMy%20Christchurch%20suburb%20%28if%20requesting%20a%20visit%29%3A%20%0ABest%20days%2Ftimes%3A%20%0APreferred%20support%20%28remote%2Fonsite%2Fnot%20sure%29%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Email Tidy Tech for help</a>
+  <a class="mobile-cta" data-track="mobile-help" data-track-view="mobile-help" data-track-type="cta" href="mailto:help@tidytech.co.nz?subject=Help%20with%20my%20technology&amp;body=Hi%20Tidy%20Tech%2C%0A%0AI%27d%20like%20some%20help%20with%3A%0A%0ADevice%3A%20%0AWhat%27s%20happening%3A%20%0AWhat%20I%27ve%20already%20tried%3A%20%0AWhen%20it%20started%3A%20%0AMy%20Christchurch%20suburb%20%28if%20requesting%20a%20visit%29%3A%20%0ABest%20days%2Ftimes%3A%20%0APreferred%20support%20%28remote%2Fonsite%2Fnot%20sure%29%3A%20%0A%0AMy%20name%3A%20%0ABest%20contact%20number%3A%20%0A%0AThanks%21">Email Tidy Tech for help</a>
   <script>
     window.TIDY_TECH_TRACKING = {
-      gtmId: "",
-      plausibleDomain: ""
+      gtmId: ""
     };
   </script>
   <script src="tracking.js" defer></script>
