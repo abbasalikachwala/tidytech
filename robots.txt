@@ -1,4 +1,52 @@
+# OpenAI: allow ChatGPT search and user-requested access
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI: do not use content for model training
+User-agent: GPTBot
+Disallow: /
+
+
+# Anthropic: allow Claude search and user-requested access
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Anthropic: do not use content for model training
+User-agent: ClaudeBot
+Disallow: /
+
+
+# Perplexity: allow search discovery and citations
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+
+# Google: allow regular search crawling
+User-agent: Googlebot
+Allow: /
+
+# Google: opt out of the specified Gemini training and grounding uses
+User-agent: Google-Extended
+Disallow: /
+
+
+# Do not include content in Common Crawl's open dataset
+User-agent: CCBot
+Disallow: /
+
+
+# Allow other ordinary search engines and crawlers
 User-agent: *
 Allow: /
 
+# Keep your existing sitemap declaration, if present
 Sitemap: https://tidytech.co.nz/sitemap.xml
