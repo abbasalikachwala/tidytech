@@ -158,10 +158,9 @@
       position: relative;
       min-height: 680px;
       overflow: hidden;
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: center;
-      padding-block: clamp(3rem, 7vw, 6rem);
-      padding-inline: max(1.5rem, calc((100vw - var(--max)) / 2 + 3rem));
       border-block: 1px solid var(--line);
       background: #edf4fc;
       isolation: isolate;
@@ -182,14 +181,26 @@
       z-index: -1;
       background: linear-gradient(90deg, rgba(255,255,255,.99) 0%, rgba(255,255,255,.97) 37%, rgba(255,255,255,.62) 58%, rgba(255,255,255,.04) 78%);
     }
-    .hero-copy { max-width: 680px; }
+    .hero-copy {
+      grid-column: 1;
+      width: min(calc(100% - 3rem), 680px);
+      justify-self: center;
+      padding-block: clamp(3rem, 7vw, 6rem);
+    }
     .hero .eyebrow { margin-bottom: 1rem; }
     .hero .lead { max-width: 650px; margin-top: 1.5rem; color: #415873; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
     .hero-note { margin-top: 1.05rem; color: var(--ink-soft); font-size: .88rem; }
-    .proof-strip { padding: 1.6rem 0; border-bottom: 1px solid var(--line); background: #fff; }
-    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .proof-item { padding: .35rem 1.4rem; text-align: center; }
+    .proof-strip { border-bottom: 1px solid var(--line); background: #fff; }
+    .proof-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .proof-item {
+      display: flex;
+      min-height: 116px;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1.1rem clamp(.8rem, 1.5vw, 1.6rem);
+      text-align: center;
+    }
     .proof-item + .proof-item { border-left: 1px solid var(--line); }
     .proof-item strong { display: block; color: var(--navy); font-size: 1rem; }
     .proof-item span { color: var(--ink-soft); font-size: .88rem; }
@@ -406,9 +417,13 @@
 
     @media (max-width: 940px) {
       .nav-links > a:not(.button) { display: none; }
-      .hero-shell { min-height: 720px; align-items: flex-start; padding: 3.5rem; }
+      .hero-shell { min-height: 720px; display: flex; align-items: flex-start; padding: 3.5rem; }
       .hero-shell::before { background: linear-gradient(180deg, rgba(255,255,255,.99) 0%, rgba(255,255,255,.95) 49%, rgba(255,255,255,.12) 75%); }
-      .hero-copy { max-width: 720px; }
+      .hero-copy { width: auto; max-width: 720px; padding: 0; }
+      .proof-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .proof-item { grid-column: span 2; }
+      .proof-item:nth-child(n + 4) { grid-column: span 3; border-top: 1px solid var(--line); }
+      .proof-item:nth-child(4) { border-left: 0; }
       .problem-intro, .trust-wrap { grid-template-columns: 1fr; gap: 2.4rem; }
       .outcome-grid { grid-template-columns: 1fr; min-height: 0; }
       .outcome-photo, .outcome-photo-wrap { min-height: 500px; height: 500px; }
@@ -430,9 +445,15 @@
       .hero .lead { font-size: 1.03rem; }
       .hero-actions { align-items: stretch; flex-direction: column; }
       .hero-actions .button { width: 100%; }
-      .proof-grid { grid-template-columns: 1fr; }
-      .proof-item { padding: .85rem; text-align: left; }
-      .proof-item + .proof-item { border-top: 1px solid var(--line); border-left: 0; }
+      .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .proof-item,
+      .proof-item:nth-child(n + 4) { grid-column: auto; min-height: 104px; padding: .9rem .75rem; }
+      .proof-item:nth-child(n) { border-top: 0; border-left: 0; }
+      .proof-item:nth-child(even) { border-left: 1px solid var(--line); }
+      .proof-item:nth-child(n + 3) { border-top: 1px solid var(--line); }
+      .proof-item:last-child { grid-column: 1 / -1; border-left: 0; }
+      .proof-item strong { font-size: .9rem; }
+      .proof-item span { font-size: .8rem; line-height: 1.45; }
       .problem-grid, .services-grid, .price-grid, .steps, .boundary-list { grid-template-columns: 1fr; }
       .problem-section { padding-bottom: 3rem; }
       .problem-card, .service-card { min-height: 0; }
@@ -536,10 +557,12 @@
     </section>
 
     <div class="proof-strip" aria-label="Tidy Tech service summary">
-      <div class="container proof-grid">
+      <div class="proof-grid">
         <div class="proof-item"><strong>Remote support across New Zealand</strong><span>Get help without waiting for a visit</span></div>
         <div class="proof-item"><strong>Onsite support in Christchurch</strong><span>When someone needs to be there in person</span></div>
         <div class="proof-item"><strong>From $50 for the first hour</strong><span>You approve the cost before work begins</span></div>
+        <div class="proof-item"><strong>Clear answers, no tech jargon</strong><span>Know what changed and what to do next</span></div>
+        <div class="proof-item"><strong>You stay in control</strong><span>No passwords shared and no surprise changes</span></div>
       </div>
     </div>
 
