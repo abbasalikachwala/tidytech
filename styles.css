@@ -152,7 +152,6 @@
       grid-column: 1;
       width: min(calc(100% - 3rem), 680px);
       justify-self: center;
-      padding-block: clamp(3rem, 7vw, 6rem);
     }
     .hero .eyebrow { margin-bottom: 1rem; }
     .hero .lead { max-width: 650px; margin-top: 1.5rem; color: #415873; }
@@ -177,7 +176,7 @@
     .problem-panel {
       position: relative;
       overflow: hidden;
-      padding: clamp(4rem, 6vw, 6.5rem) var(--page-gutter);
+      padding: clamp(4rem, 4vw, 6.5rem) var(--page-gutter);
       border: 0;
       border-radius: 0;
       background: transparent;
@@ -243,7 +242,7 @@
       min-height: 650px;
       object-fit: cover;
     }
-    .outcome-copy { align-self: center; max-width: 730px; padding: clamp(3rem, 5vw, 5rem); }
+    .outcome-copy { align-self: center; max-width: 730px; padding: clamp(3rem, 3vw, 5rem); }
     .outcome-copy .eyebrow { margin-bottom: 1rem; }
     .outcome-copy .lead { margin-top: 1.25rem; }
     .outcome-list { display: grid; gap: .9rem; margin: 1.6rem 0 0; padding: 0; list-style: none; }
